@@ -1,0 +1,11 @@
+        <!--System-START-->
+        <form name="system">
+            <field property="systemAbbreviation" depends="required">
+                <arg key="system.systemAbbreviation"/>
+            </field>
+            <field property="systemName" depends="required">
+                <arg key="system.systemName"/>
+            </field>
+        </form>
+        <!--System-END-->
+    </formset>

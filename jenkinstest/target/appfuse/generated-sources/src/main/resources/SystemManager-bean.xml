@@ -1,0 +1,7 @@
+<!--SystemManager-START-->
+    <bean id="systemManager" class="com.cqrcb.service.impl.SystemManagerImpl">
+        <constructor-arg ref="systemDao"/>
+    </bean>
+    <!--SystemManager-END-->
+
+    <!-- Add new Managers here -->

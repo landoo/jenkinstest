@@ -1,0 +1,5 @@
+<!--SystemDao-START-->
+    <bean id="systemDao" class="com.cqrcb.dao.hibernate.SystemDaoHibernate"/>
+    <!--SystemDao-END-->
+
+    <!-- Add new DAOs here -->

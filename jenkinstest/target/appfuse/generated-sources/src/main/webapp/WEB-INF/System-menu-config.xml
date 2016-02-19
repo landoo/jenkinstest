@@ -1,0 +1,4 @@
+        <!--System-START-->
+        <Menu name="SystemMenu" title="systemList.title" page="/systems"/>
+        <!--System-END-->
+    </Menus>

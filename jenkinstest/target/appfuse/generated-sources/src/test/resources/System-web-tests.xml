@@ -1,0 +1,97 @@
+    <!--System-START-->
+    <!-- runs system-related tests -->
+    <target name="SystemTests"
+            depends="SearchSystems,EditSystem,SaveSystem,AddSystem,DeleteSystem"
+            description="Call and executes all system test cases (targets)">
+        <echo>Successfully ran all System UI tests!</echo>
+    </target>
+
+    <!-- Verify the systems list screen displays without errors -->
+    <target name="SearchSystems" description="Tests search for and displaying all systems">
+        <webtest name="searchSystems">
+            &config;
+            <steps>
+                &login;
+                <invoke description="click View System link" url="/systems"/>
+                <verifytitle description="we should see the systemList title"
+                    text=".*${systemList.title}.*" regex="true"/>
+                <setinputfield description="set search term" name="q" value="*"/>
+                <clickbutton label="${button.search}" description="Click Search"/>
+                <verifytitle description="we should see the systemList title"
+                    text=".*${systemList.title}.*" regex="true"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <!-- Verify the edit system screen displays without errors -->
+    <target name="EditSystem" description="Tests editing an existing System's information">
+        <webtest name="editSystem">
+            &config;
+            <steps>
+                &login;
+                <invoke description="View System List" url="/systems"/>
+                <clicklink label="-1" description="Click edit link"/>
+                <verifytitle description="we should see the systemDetail title"
+                    text=".*${systemDetail.title}.*" regex="true"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <!-- Edit a system and then save -->
+    <target name="SaveSystem" description="Tests editing and saving a system">
+        <webtest name="saveSystem">
+            &config;
+            <steps>
+                &login;
+                <invoke description="click Edit System link" url="/systemform?systemId=-1"/>
+                <verifytitle description="we should see the systemDetail title"
+                    text=".*${systemDetail.title}.*" regex="true"/>
+
+                <!-- update some of the required fields -->
+                <setInputField description="set systemAbbreviation" name="systemAbbreviation" value="IoSjPtMwIkOqCcJj"/>
+                <setInputField description="set systemName" name="systemName" value="ReZeXpStWgJaIwXhXeZdAwTdHkKbHjZdPdXkLiSuQmJcBmFvFtMeKwZnLzMjUsHb"/>
+
+                <clickbutton label="${button.save}" description="Click Save"/>
+                <verifytitle description="Page re-appears if save successful"
+                    text=".*${systemDetail.title}.*" regex="true"/>
+                <verifytext description="verify success message" text="${system.updated}"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <!-- Add a new System -->
+    <target name="AddSystem" description="Adds a new System">
+        <webtest name="addSystem">
+            &config;
+            <steps>
+                &login;
+                <invoke description="click Add Button" url="/systemform"/>
+                <verifytitle description="we should see the systemDetail title"
+                    text=".*${systemDetail.title}.*" regex="true"/>
+
+                <!-- enter required fields -->
+                <setInputField description="set systemAbbreviation" name="systemAbbreviation" value="XlGqTfYwAwGsYwIk"/>
+                <setInputField description="set systemName" name="systemName" value="OwAvOuJkCmEyNhFsZjSeLhXtZgMyPbLxMfLiCrEsIzXeYoTvOwWuEuEoFsMgLmGx"/>
+
+                <clickbutton label="${button.save}" description="Click button 'Save'"/>
+                <verifytitle description="System List appears if save successful"
+                    text=".*${systemList.title}.*" regex="true"/>
+                <verifytext description="verify success message" text="${system.added}"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <!-- Delete existing system -->
+    <target name="DeleteSystem" description="Deletes existing System">
+        <webtest name="deleteSystem">
+            &config;
+            <steps>
+                &login;
+                <invoke description="click Edit System link" url="/systemform?systemId=-1"/>
+                <clickbutton label="${button.delete}" description="Click button 'Delete'"/>
+                <verifytitle description="display System List" text=".*${systemList.title}.*" regex="true"/>
+                <verifytext description="verify success message" text="${system.deleted}"/>
+            </steps>
+        </webtest>
+    </target>    <!--System-END-->
+</project>

@@ -1,0 +1,13 @@
+<web-app id="jenkinstest-1.0-SNAPSHOT">
+    <jsp fast-jstl="false"/>
+
+    <!--database>
+        <jndi-name>jdbc/appfuse</jndi-name>
+        <driver type="com.mysql.jdbc.Driver">
+            <url>jdbc:mysql://localhost:3306/myappfuse</url>
+            <user>root</user>
+            <password>123456</password>
+        </driver>
+    </database-->
+</web-app>
+

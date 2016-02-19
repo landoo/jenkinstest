@@ -1,0 +1,97 @@
+    <!--Staff-START-->
+    <!-- runs staff-related tests -->
+    <target name="StaffTests"
+            depends="SearchStaffs,EditStaff,SaveStaff,AddStaff,DeleteStaff"
+            description="Call and executes all staff test cases (targets)">
+        <echo>Successfully ran all Staff UI tests!</echo>
+    </target>
+
+    <!-- Verify the staffs list screen displays without errors -->
+    <target name="SearchStaffs" description="Tests search for and displaying all staffs">
+        <webtest name="searchStaffs">
+            &config;
+            <steps>
+                &login;
+                <invoke description="click View Staff link" url="/staffs"/>
+                <verifytitle description="we should see the staffList title"
+                    text=".*${staffList.title}.*" regex="true"/>
+                <setinputfield description="set search term" name="q" value="*"/>
+                <clickbutton label="${button.search}" description="Click Search"/>
+                <verifytitle description="we should see the staffList title"
+                    text=".*${staffList.title}.*" regex="true"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <!-- Verify the edit staff screen displays without errors -->
+    <target name="EditStaff" description="Tests editing an existing Staff's information">
+        <webtest name="editStaff">
+            &config;
+            <steps>
+                &login;
+                <invoke description="View Staff List" url="/staffs"/>
+                <clicklink label="-1" description="Click edit link"/>
+                <verifytitle description="we should see the staffDetail title"
+                    text=".*${staffDetail.title}.*" regex="true"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <!-- Edit a staff and then save -->
+    <target name="SaveStaff" description="Tests editing and saving a staff">
+        <webtest name="saveStaff">
+            &config;
+            <steps>
+                &login;
+                <invoke description="click Edit Staff link" url="/staffform?staffId=-1"/>
+                <verifytitle description="we should see the staffDetail title"
+                    text=".*${staffDetail.title}.*" regex="true"/>
+
+                <!-- update some of the required fields -->
+                <setInputField description="set staffName" name="staffName" value="ZeWxUzPvXrS"/>
+                <setInputField description="set staffstatus" name="staffstatus" value="5536169623544387584"/>
+
+                <clickbutton label="${button.save}" description="Click Save"/>
+                <verifytitle description="Page re-appears if save successful"
+                    text=".*${staffDetail.title}.*" regex="true"/>
+                <verifytext description="verify success message" text="${staff.updated}"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <!-- Add a new Staff -->
+    <target name="AddStaff" description="Adds a new Staff">
+        <webtest name="addStaff">
+            &config;
+            <steps>
+                &login;
+                <invoke description="click Add Button" url="/staffform"/>
+                <verifytitle description="we should see the staffDetail title"
+                    text=".*${staffDetail.title}.*" regex="true"/>
+
+                <!-- enter required fields -->
+                <setInputField description="set staffName" name="staffName" value="OqLfScMbGcW"/>
+                <setInputField description="set staffstatus" name="staffstatus" value="6431084680539369472"/>
+
+                <clickbutton label="${button.save}" description="Click button 'Save'"/>
+                <verifytitle description="Staff List appears if save successful"
+                    text=".*${staffList.title}.*" regex="true"/>
+                <verifytext description="verify success message" text="${staff.added}"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <!-- Delete existing staff -->
+    <target name="DeleteStaff" description="Deletes existing Staff">
+        <webtest name="deleteStaff">
+            &config;
+            <steps>
+                &login;
+                <invoke description="click Edit Staff link" url="/staffform?staffId=-1"/>
+                <clickbutton label="${button.delete}" description="Click button 'Delete'"/>
+                <verifytitle description="display Staff List" text=".*${staffList.title}.*" regex="true"/>
+                <verifytext description="verify success message" text="${staff.deleted}"/>
+            </steps>
+        </webtest>
+    </target>    <!--Staff-END-->
+</project>

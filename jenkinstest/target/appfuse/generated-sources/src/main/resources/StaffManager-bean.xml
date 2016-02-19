@@ -1,0 +1,7 @@
+<!--StaffManager-START-->
+    <bean id="staffManager" class="com.cqrcb.service.impl.StaffManagerImpl">
+        <constructor-arg ref="staffDao"/>
+    </bean>
+    <!--StaffManager-END-->
+
+    <!-- Add new Managers here -->

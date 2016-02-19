@@ -9,5 +9,6 @@
         <mapping class="com.cqrcb.model.User"/>
         <mapping class="com.cqrcb.model.Role"/>
         <mapping class="com.cqrcb.model.System"/>
+        <mapping class="com.cqrcb.model.Staff"/>
     </session-factory>
 </hibernate-configuration>

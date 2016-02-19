@@ -27,7 +27,7 @@ public class SystemManagerImplTest extends BaseManagerMockTestCase {
     public void testGetSystem() {
         log.debug("testing get...");
         //given
-        final String systemId = "123";
+        final String systemId = "001001";
         final System system = new System();
         given(dao.get(systemId)).willReturn(system);
 
@@ -76,7 +76,7 @@ public class SystemManagerImplTest extends BaseManagerMockTestCase {
         log.debug("testing remove...");
 
         //given
-        final String systemId = "123";
+        final String systemId = "001001";
         willDoNothing().given(dao).remove(systemId);
 
         //when

@@ -1,0 +1,5 @@
+<!--StaffDao-START-->
+    <bean id="staffDao" class="com.cqrcb.dao.hibernate.StaffDaoHibernate"/>
+    <!--StaffDao-END-->
+
+    <!-- Add new DAOs here -->

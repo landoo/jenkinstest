@@ -1,0 +1,11 @@
+        <!--Staff-START-->
+        <form name="staff">
+            <field property="staffName" depends="required">
+                <arg key="staff.staffName"/>
+            </field>
+            <field property="staffstatus" depends="required">
+                <arg key="staff.staffstatus"/>
+            </field>
+        </form>
+        <!--Staff-END-->
+    </formset>

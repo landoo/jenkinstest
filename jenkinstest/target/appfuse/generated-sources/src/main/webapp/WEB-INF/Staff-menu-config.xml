@@ -1,0 +1,4 @@
+        <!--Staff-START-->
+        <Menu name="StaffMenu" title="staffList.title" page="/staffs"/>
+        <!--Staff-END-->
+    </Menus>

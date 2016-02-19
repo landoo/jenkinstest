@@ -16,6 +16,10 @@
         <!--System-START-->
         <Menu name="SystemMenu" title="systemList.title" page="/systems"/>
         <!--System-END-->
+        <!--Staff-START-->
+        <Menu name="StaffMenu" title="staffList.title" page="/staffs"/>
+        <!--Staff-END-->
     </Menus>
+
 
 </MenuConfig>

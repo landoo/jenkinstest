@@ -15,6 +15,9 @@
     <!--System-START-->
     <menu:displayMenu name="SystemMenu"/>
     <!--System-END-->
+    <!--Staff-START-->
+    <menu:displayMenu name="StaffMenu"/>
+    <!--Staff-END-->
 </ul>
 </div>
 </menu:useMenuDisplayer>
